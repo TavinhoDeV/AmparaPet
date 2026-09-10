@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="css" name="login.css" />
+    <title>Ampara - Login</title>
+</h:head>
+
+<h:body>
+
+    <div class="login-container">
+
+        <div class="login-brand">
+            <h1>AMPARA</h1>
+            <h2>Sistema de Triagem e Acompanhamento Animal</h2>
+            <img src="resources/images/logo.png" alt="Logo Ampara" />
+        </div>
+
+        <div class="login-form">
+
+            <h:form>
+
+                <h:messages />
+
+                <div class="header">
+                    <h1>Bem-vindo(a)!</h1>
+                </div>
+
+                <div class="campo-email">
+
+                    <p:outputLabel for="email" value="E-mail" />
+                    <p:inputText id="email" value="#{loginController.email}" required="true"
+                        requiredMessage="O e-mail é obrigatorio!" />
+                </div>
+
+                <div class="campo-senha">
+
+                    <p:outputLabel for="senha" value="Senha" />
+                    <p:password id="senha" value="#{loginController.senha}" required="true"
+                        requiredMessage="A senha é obrigatória!" />
+                </div>
+
+                <h:commandButton value="Entrar" action="#{loginController.entrar}" />
+
+            </h:form>
+        </div>
+    </div>
+
+</h:body>
+
+</html>
