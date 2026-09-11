@@ -17,6 +17,10 @@
     --cinza-claro: #E7ECE7;
     --cinza-texto: #66716C;
     --texto-escuro: #102D21;
+    --fonte-principal: "Montserrat", sans-serif;
+    --fonte-titulo: "Bebas Neue", sans-serif;
+    --fonte-manuscrita: "Ephesis", cursive;
+    --raio-campo: 14px;
 }
 
 html,
@@ -28,13 +32,13 @@ body {
     overflow: hidden;
 }
 
-body {
-    font-family: "Montserrat", sans-serif;
-    background: var(--branco-suave);
+body,
+body .ui-widget {
+    font-family: var(--fonte-principal);
 }
 
-body .ui-widget {
-    font-family: "Montserrat", sans-serif;
+body {
+    background: var(--branco-suave);
 }
 
 .login-container {
@@ -50,14 +54,25 @@ body .ui-widget {
     min-width: 0;
     height: 100vh;
     position: relative;
-    background: linear-gradient(145deg,
-            var(--verde-profundo),
-            var(--verde-escuro));
+    background: linear-gradient(145deg, var(--verde-profundo), var(--verde-escuro));
     z-index: 3;
 }
 
-.forma-organica {
+.forma-organica,
+.logo-ampara,
+.titulo-brand,
+.descricao-brand,
+.frase-superior,
+.beneficios,
+.frase-inferior,
+.animais-hero,
+.decoracao-topo,
+.folha,
+.frase-direita {
     position: absolute;
+}
+
+.forma-organica {
     pointer-events: none;
 }
 
@@ -67,8 +82,7 @@ body .ui-widget {
     top: -9%;
     right: -19%;
     background: var(--verde-claro);
-    border-radius:
-        50% 45% 54% 46% / 38% 44% 56% 62%;
+    border-radius: 50% 45% 54% 46% / 38% 44% 56% 62%;
     transform: rotate(-6deg);
     z-index: 1;
 }
@@ -79,8 +93,7 @@ body .ui-widget {
     top: -5%;
     right: -10%;
     background: var(--verde-secundario);
-    border-radius:
-        52% 48% 44% 56% / 45% 37% 63% 55%;
+    border-radius: 52% 48% 44% 56% / 45% 37% 63% 55%;
     transform: rotate(-3deg);
     z-index: 2;
 }
@@ -91,14 +104,12 @@ body .ui-widget {
     top: -2%;
     right: -2%;
     background: var(--verde-escuro-suave);
-    border-radius:
-        56% 44% 51% 49% / 36% 52% 48% 64%;
+    border-radius: 56% 44% 51% 49% / 36% 52% 48% 64%;
     transform: rotate(2deg);
     z-index: 3;
 }
 
 .logo-ampara {
-    position: absolute;
     width: 21%;
     max-width: 185px;
     height: auto;
@@ -108,7 +119,6 @@ body .ui-widget {
 }
 
 .titulo-brand {
-    position: absolute;
     top: 20%;
     left: 8%;
     width: 38%;
@@ -118,7 +128,7 @@ body .ui-widget {
 .titulo-brand h1 {
     position: relative;
     margin: 0;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: var(--fonte-titulo);
     font-size: clamp(29px, 2.25vw, 38px);
     font-weight: 400;
     line-height: 0.92;
@@ -132,10 +142,10 @@ body .ui-widget {
     width: max-content;
     margin-top: -50px;
     margin-left: 200px;
-    font-family: "Ephesis", cursive;
+    font-family: var(--fonte-manuscrita);
     font-size: clamp(56px, 4.5vw, 72px);
     font-weight: 400;
-    x line-height: 0.82;
+    line-height: 0.82;
     color: var(--verde-claro);
     transform: rotate(-2deg);
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
@@ -143,14 +153,12 @@ body .ui-widget {
 }
 
 .descricao-brand {
-    position: absolute;
     top: 39%;
     left: 8%;
     width: 30%;
     max-width: 275px;
     margin: 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(11px, 0.9vw, 14px);
+    font-size: clamp(11px, 0.9vw, 28px);
     font-weight: 550;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.96);
@@ -158,35 +166,46 @@ body .ui-widget {
     z-index: 12;
 }
 
-.frase-superior {
-    position: absolute;
-    top: 15%;
-    right: 1%;
-    width: 150px;
-    font-family: "Ephesis", cursive;
-    font-size: clamp(20px, 1.7vw, 26px);
-    line-height: 1.05;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.97);
+.frase-superior,
+.frase-inferior,
+.frase-direita {
+    font-family: var(--fonte-manuscrita);
+}
+
+.frase-superior,
+.frase-inferior {
+    color: rgba(255, 255, 255, 0.98);
     transform: rotate(-5deg);
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
     z-index: 16;
 }
 
-.frase-superior::after {
+.frase-superior {
+    top: 15%;
+    right: 1%;
+    width: 150px;
+    font-size: clamp(20px, 1.7vw, 26px);
+    line-height: 1.05;
+    text-align: center;
+}
+
+.frase-superior::after,
+.frase-inferior::after {
     content: "";
     display: block;
-    width: 58px;
     height: 4px;
-    margin: 9px auto 0;
     background: var(--verde-lima-claro);
     border-radius: 999px;
     transform: rotate(-7deg);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
+.frase-superior::after {
+    width: 58px;
+    margin: 9px auto 0;
+}
+
 .beneficios {
-    position: absolute;
     left: 8%;
     bottom: 18%;
     display: flex;
@@ -212,9 +231,7 @@ body .ui-widget {
     border-radius: 50%;
     color: var(--verde-lima-claro);
     background: rgba(11, 46, 30, 0.38);
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.10),
-        inset 0 0 12px rgba(181, 224, 61, 0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10), inset 0 0 12px rgba(181, 224, 61, 0.03);
 }
 
 .icone-beneficio i {
@@ -242,33 +259,19 @@ body .ui-widget {
 }
 
 .frase-inferior {
-    position: absolute;
     left: 8%;
     bottom: 5%;
     width: 165px;
-    font-family: "Ephesis", cursive;
     font-size: clamp(21px, 1.75vw, 27px);
     line-height: 0.95;
-    color: rgba(255, 255, 255, 0.98);
-    transform: rotate(-5deg);
-    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
-    z-index: 16;
 }
 
 .frase-inferior::after {
-    content: "";
-    display: block;
     width: 68px;
-    height: 4px;
     margin-top: 10px;
-    background: var(--verde-lima-claro);
-    border-radius: 999px;
-    transform: rotate(-7deg);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
 .animais-hero {
-    position: absolute;
     width: 88%;
     max-width: 790px;
     height: auto;
@@ -276,8 +279,7 @@ body .ui-widget {
     left: 30%;
     z-index: 15;
     pointer-events: none;
-    filter:
-        drop-shadow(25px 24px 30px rgba(5, 25, 15, 0.30)) drop-shadow(8px 10px 10px rgba(5, 25, 15, 0.19));
+    filter: drop-shadow(25px 24px 30px rgba(5, 25, 15, 0.30)) drop-shadow(8px 10px 10px rgba(5, 25, 15, 0.19));
 }
 
 .login-form {
@@ -289,17 +291,9 @@ body .ui-widget {
     align-items: center;
     justify-content: center;
     background:
-        radial-gradient(ellipse 35% 66% at 108% 48%,
-            rgba(183, 230, 178, 0.92) 0%,
-            rgba(183, 230, 178, 0.92) 55%,
-            transparent 56%),
-        radial-gradient(ellipse 42% 42% at 73% 108%,
-            rgba(101, 167, 94, 0.48) 0%,
-            rgba(101, 167, 94, 0.48) 55%,
-            transparent 56%),
-        linear-gradient(145deg,
-            #F7F9F5,
-            #EDF4EA);
+        radial-gradient(ellipse 35% 66% at 108% 48%, rgba(183, 230, 178, 0.92) 0%, rgba(183, 230, 178, 0.92) 55%, transparent 56%),
+        radial-gradient(ellipse 42% 42% at 73% 108%, rgba(101, 167, 94, 0.48) 0%, rgba(101, 167, 94, 0.48) 55%, transparent 56%),
+        linear-gradient(145deg, #F7F9F5, #EDF4EA);
     z-index: 1;
 }
 
@@ -315,10 +309,7 @@ body .ui-widget {
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid rgba(255, 255, 255, 0.98);
     border-radius: 30px;
-    box-shadow:
-        0 32px 72px rgba(15, 47, 31, 0.15),
-        0 10px 30px rgba(15, 47, 31, 0.07),
-        inset 0 1px 0 rgba(255, 255, 255, 0.98);
+    box-shadow: 0 32px 72px rgba(15, 47, 31, 0.15), 0 10px 30px rgba(15, 47, 31, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     z-index: 8;
@@ -330,7 +321,7 @@ body .ui-widget {
 
 .header h1 {
     margin: 0 0 7px;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: var(--fonte-titulo);
     font-size: clamp(36px, 2.8vw, 44px);
     font-weight: 400;
     line-height: 1;
@@ -341,7 +332,6 @@ body .ui-widget {
 .header p {
     margin: 0;
     max-width: 310px;
-    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     font-weight: 500;
     line-height: 1.5;
@@ -370,7 +360,7 @@ body .ui-widget {
     align-items: center;
 }
 
-.input-container>i {
+.input-container > i {
     position: absolute;
     left: 15px;
     font-size: 16px;
@@ -384,18 +374,15 @@ body .ui-widget {
     box-sizing: border-box;
     min-height: 50px;
     padding: 11px 44px;
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--fonte-principal);
     font-size: 13px;
     color: var(--texto-escuro);
     background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(15, 47, 31, 0.17);
-    border-radius: 14px;
+    border-radius: var(--raio-campo);
     outline: none;
     box-shadow: none;
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background-color 0.25s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
 .input-container .ui-inputfield:hover {
@@ -408,12 +395,12 @@ body .ui-widget {
     box-shadow: 0 0 0 4px rgba(47, 143, 88, 0.10);
 }
 
-.senha-container .ui-password {
+.senha-container .ui-password,
+.senha-container .ui-password input {
     width: 100%;
 }
 
 .senha-container .ui-password input {
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -429,9 +416,7 @@ body .ui-widget {
     font-weight: 650;
     color: var(--verde-escuro-suave);
     text-decoration: underline;
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .recuperar-senha a:hover {
@@ -443,28 +428,27 @@ body .ui-widget {
     position: relative;
 }
 
-.botao-entrar-container input[type="submit"] {
+.botao-entrar-container input[type="submit"],
+.botao-instituicao {
     width: 100%;
+    border-radius: var(--raio-campo);
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+}
+
+.botao-entrar-container input[type="submit"] {
     min-height: 50px;
     padding: 11px 48px;
     border: none;
-    border-radius: 14px;
-    background: linear-gradient(90deg,
-            var(--verde-principal),
-            #167D3A);
-    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(90deg, var(--verde-principal), #167D3A);
     font-size: 14px;
     font-weight: 800;
     color: var(--branco);
-    cursor: pointer;
     box-shadow: 0 12px 26px rgba(47, 143, 88, 0.20);
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        filter 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
 }
 
-.botao-entrar-container>i {
+.botao-entrar-container > i {
     position: absolute;
     top: 50%;
     right: 20px;
@@ -501,24 +485,17 @@ body .ui-widget {
 }
 
 .botao-instituicao {
-    width: 100%;
     min-height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 11px;
     border: 1px solid rgba(15, 47, 31, 0.04);
-    border-radius: 14px;
     background: rgba(230, 237, 228, 0.92);
-    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     font-weight: 650;
     color: var(--texto-escuro);
-    cursor: pointer;
-    transition:
-        background-color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .botao-instituicao i {
@@ -541,12 +518,11 @@ body .ui-widget {
     margin-top: 7px;
     padding-top: 10px;
     border-top: 1px solid rgba(15, 47, 31, 0.10);
-    font-family: "Montserrat", sans-serif;
     font-size: 11px;
     color: var(--cinza-texto);
 }
 
-.cadastro-container>span {
+.cadastro-container > span {
     font-weight: 500;
 }
 
@@ -557,9 +533,7 @@ body .ui-widget {
     color: var(--verde-principal);
     font-weight: 750;
     text-decoration: none;
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .cadastro-container a i {
@@ -588,7 +562,6 @@ body .ui-widget {
 }
 
 .decoracao-topo {
-    position: absolute;
     top: 5%;
     right: 5%;
     display: flex;
@@ -608,7 +581,6 @@ body .ui-widget {
 }
 
 .folha {
-    position: absolute;
     width: 42px;
     height: 20px;
     border-radius: 100% 0 100% 0;
@@ -630,11 +602,9 @@ body .ui-widget {
 }
 
 .frase-direita {
-    position: absolute;
     right: 6%;
     bottom: 8%;
     width: 170px;
-    font-family: "Ephesis", cursive;
     font-size: 24px;
     line-height: 0.95;
     text-align: center;
@@ -643,17 +613,15 @@ body .ui-widget {
     z-index: 12;
 }
 
-.mensagens-login {
-    margin: 0 0 10px;
-    padding: 0;
-    list-style: none;
-    font-family: "Montserrat", sans-serif;
-}
-
+.mensagens-login,
 .mensagens-login ul {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.mensagens-login {
+    margin-bottom: 10px;
 }
 
 .mensagens-login li {
@@ -881,7 +849,6 @@ body .ui-widget {
 }
 
 @media (max-width: 960px) {
-
     html,
     body {
         height: auto;
