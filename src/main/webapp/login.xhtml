@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <h:outputStylesheet library="css" name="login.css" />
@@ -11,40 +13,225 @@
 
     <div class="login-container">
 
-        <div class="login-brand">
-            <h1>AMPARA</h1>
-            <h2>Sistema de Triagem e Acompanhamento Animal</h2>
-            <img src="resources/images/logo.png" alt="Logo Ampara" />
-        </div>
+        <section class="login-brand">
 
-        <div class="login-form">
+            <div class="forma-organica forma-1"></div>
+            <div class="forma-organica forma-2"></div>
+            <div class="forma-organica forma-3"></div>
+
+            <img class="logo-ampara"
+                 src="resources/images/logo-branca.png"
+                 alt="Logo Ampara" />
+
+            <div class="titulo-brand">
+                <h1>
+                    Cuidado que transforma
+                    <span>vidas.</span>
+                </h1>
+            </div>
+
+            <p class="descricao-brand">
+                Uma plataforma para conectar resgate, triagem,
+                tratamento e adoção de animais em situação de rua.
+            </p>
+
+            <div class="frase-superior">
+                Todo animal merece uma nova chance.
+            </div>
+
+            <div class="beneficios">
+
+                <div class="beneficio">
+
+                    <div class="icone-beneficio">
+                        <i class="pi pi-shield"></i>
+                    </div>
+
+                    <div class="texto-beneficio">
+                        <strong>Mais proteção</strong>
+                        <span>para os animais</span>
+                    </div>
+
+                </div>
+
+                <div class="beneficio">
+
+                    <div class="icone-beneficio">
+                        <i class="pi pi-users"></i>
+                    </div>
+
+                    <div class="texto-beneficio">
+                        <strong>Mais conexão</strong>
+                        <span>entre pessoas e ONGs</span>
+                    </div>
+
+                </div>
+
+                <div class="beneficio">
+
+                    <div class="icone-beneficio">
+                        <i class="pi pi-heart"></i>
+                    </div>
+
+                    <div class="texto-beneficio">
+                        <strong>Mais vidas</strong>
+                        <span>com novas oportunidades</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="frase-inferior">
+                Juntos por um futuro melhor!
+            </div>
+
+            <img class="animais-hero"
+                 src="resources/images/animais.png"
+                 alt="Cachorro e gato" />
+
+        </section>
+
+        <section class="login-form">
+
+            <div class="decoracao-topo">
+                <i class="pi pi-heart"></i>
+                <span>
+                    Pequenas atitudes<br />
+                    grandes mudanças.
+                </span>
+            </div>
+
+            <div class="folha folha-1"></div>
+            <div class="folha folha-2"></div>
 
             <h:form>
 
-                <h:messages />
+                <h:messages
+                    styleClass="mensagens-login"
+                    errorClass="mensagem-erro"
+                    warnClass="mensagem-aviso"
+                    infoClass="mensagem-info"
+                    fatalClass="mensagem-fatal"
+                    showDetail="true"
+                    showSummary="true" />
 
                 <div class="header">
+
                     <h1>Bem-vindo(a)!</h1>
+
+                    <p>
+                        Acesse sua conta para continuar<br />
+                        fazendo a diferença.
+                    </p>
+
                 </div>
 
                 <div class="campo-email">
 
                     <p:outputLabel for="email" value="E-mail" />
-                    <p:inputText id="email" value="#{loginController.email}" required="true"
-                        requiredMessage="O e-mail é obrigatorio!" />
+
+                    <div class="input-container">
+
+                        <i class="pi pi-envelope"></i>
+
+                        <p:inputText
+                            id="email"
+                            value="#{loginController.email}"
+                            required="true"
+                            requiredMessage="O e-mail é obrigatório!"
+                            placeholder="seu@email.com" />
+
+                    </div>
+
                 </div>
 
                 <div class="campo-senha">
 
                     <p:outputLabel for="senha" value="Senha" />
-                    <p:password id="senha" value="#{loginController.senha}" required="true"
-                        requiredMessage="A senha é obrigatória!" />
+
+                    <div class="input-container senha-container">
+
+                        <i class="pi pi-lock"></i>
+
+                        <p:password
+                            id="senha"
+                            value="#{loginController.senha}"
+                            required="true"
+                            requiredMessage="A senha é obrigatória!"
+                            placeholder="Sua senha"
+                            toggleMask="true"
+                            feedback="false" />
+
+                    </div>
+
                 </div>
 
-                <h:commandButton value="Entrar" action="#{loginController.entrar}" />
+                <div class="recuperar-senha">
+                    <a href="#">Esqueci minha senha?</a>
+                </div>
+
+                <div class="botao-entrar-container">
+
+                    <h:commandButton
+                        value="Entrar"
+                        action="#{loginController.entrar}" />
+
+                    <i class="pi pi-arrow-right"></i>
+
+                </div>
+
+                <div class="separador">
+
+                    <span></span>
+
+                    <p>ou</p>
+
+                    <span></span>
+
+                </div>
+
+                <button type="button"
+                        class="botao-instituicao">
+
+                    <i class="pi pi-users"></i>
+
+                    <span>Acessar como instituição</span>
+
+                </button>
+
+                <div class="cadastro-container">
+
+                    <span>Ainda não tem uma conta?</span>
+
+                    <a href="cadastro.xhtml">
+                        <i class="pi pi-user-plus"></i>
+                        Cadastre-se
+                    </a>
+
+                </div>
+
+                <div class="rodape-card">
+
+                    <span>AMPARA</span>
+
+                    <span>•</span>
+
+                    <span>Cidades mais humanas para todos</span>
+
+                    <i class="pi pi-heart-fill"></i>
+
+                </div>
 
             </h:form>
-        </div>
+
+            <div class="frase-direita">
+                Faça sua parte para<br />
+                Um amanhã melhor.
+            </div>
+
+        </section>
+
     </div>
 
 </h:body>
