@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="css" name="cadastro.css" />
+    <title>Ampara - Cadastro</title>
+</h:head>
+
+<h:body>
+
+    <div class="cadastro-container">
+
+        <section class="cadastro-form">
+
+            <div class="cadastro-card">
+
+                <h:form>
+
+                    <div class="cadastro-header">
+                        <h1>Crie sua conta</h1>
+
+                        <p>
+                            Faça parte do Ampara e ajude a construir novas histórias
+                            para animais que precisam de cuidado.
+                        </p>
+                    </div>
+
+                    <div class="campos-cadastro">
+
+                        <div class="campo-cadastro">
+
+                            <p:outputLabel
+                                for="nome"
+                                value="Nome completo" />
+
+                            <div class="input-container">
+
+                                <i class="pi pi-user"></i>
+
+                                <p:inputText
+                                    id="nome"
+                                    placeholder="Digite seu nome completo."
+                                    value="#{cadastroController.nome}"
+                                    required="true"
+                                    requiredMessage="O nome completo é obrigatório." />
+
+                            </div>
+
+                        </div>
+
+                        <div class="campo-cadastro">
+
+                            <p:outputLabel
+                                for="email"
+                                value="E-mail" />
+
+                            <div class="input-container">
+
+                                <i class="pi pi-envelope"></i>
+
+                                <p:inputText
+                                    id="email"
+                                    placeholder="Digite seu e-mail."
+                                    value="#{cadastroController.email}"
+                                    validatorMessage="Digite um e-mail válido."
+                                    required="true"
+                                    requiredMessage="O e-mail é obrigatório.">
+
+                                    <f:validateRegex
+                                        pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" />
+
+                                </p:inputText>
+
+                            </div>
+
+                        </div>
+
+                        <div class="campo-cadastro">
+
+                            <p:outputLabel
+                                for="telefone"
+                                value="Telefone" />
+
+                            <div class="input-container">
+
+                                <i class="pi pi-phone"></i>
+
+                                <p:inputMask
+                                    id="telefone"
+                                    placeholder="(00) 00000-0000"
+                                    mask="(99) 99999-9999"
+                                    value="#{cadastroController.telefone}"
+                                    required="true"
+                                    requiredMessage="O telefone é obrigatório." />
+
+                            </div>
+
+                        </div>
+
+                        <div class="campo-cadastro">
+
+                            <p:outputLabel
+                                for="senha"
+                                value="Senha" />
+
+                            <div class="input-container senha-container">
+
+                                <i class="pi pi-lock"></i>
+
+                                <p:password
+                                    id="senha"
+                                    placeholder="Digite sua senha."
+                                    toggleMask="true"
+                                    feedback="false"
+                                    value="#{cadastroController.senha}"
+                                    validatorMessage="A senha deve possuir pelo menos 8 caracteres."
+                                    required="true"
+                                    requiredMessage="A senha é obrigatória.">
+
+                                    <f:validateLength minimum="8" />
+
+                                </p:password>
+
+                            </div>
+
+                        </div>
+
+                        <div class="campo-cadastro">
+
+                            <p:outputLabel
+                                for="confirmarSenha"
+                                value="Confirmar senha" />
+
+                            <div class="input-container senha-container">
+
+                                <i class="pi pi-lock"></i>
+
+                                <p:password
+                                    id="confirmarSenha"
+                                    placeholder="Confirme sua senha."
+                                    toggleMask="true"
+                                    feedback="false"
+                                    value="#{cadastroController.confirmarSenha}"
+                                    required="true"
+                                    requiredMessage="A confirmação de senha é obrigatória." />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="aceite-termos">
+
+                        <p:selectBooleanCheckbox
+                            id="termos"
+                            value="#{cadastroController.termos}"
+                            required="true"
+                            requiredMessage="Você deve aceitar os termos e condições para prosseguir." />
+
+                        <p:outputLabel
+                            for="termos"
+                            value="Li e aceito os Termos de Uso e a Política de Privacidade" />
+
+                    </div>
+
+                    <p:messages
+                        id="mensagens"
+                        autoUpdate="true"
+                        showDetail="true"
+                        showSummary="false"
+                        closable="true"
+                        styleClass="mensagens-cadastro" />
+
+                    <div class="botao-criar-conta">
+
+                        <p:commandButton
+                            value="Criar conta"
+                            action="#{cadastroController.cadastrar}"
+                            update="@form"
+                            icon="pi pi-arrow-right"
+                            iconPos="right"
+                            styleClass="botao-primario" />
+
+                    </div>
+
+                    <div class="login-link">
+
+                        <span>Já possui uma conta?</span>
+
+                        <h:link
+                            outcome="login"
+                            value="Entrar" />
+
+                    </div>
+
+                    <div class="rodape-card">
+                        <i class="pi pi-heart-fill"></i>
+                        <span>AMPARA · Cidades mais humanas para todos</span>
+                    </div>
+
+                </h:form>
+
+            </div>
+
+        </section>
+
+        <section class="cadastro-brand">
+
+            <div class="forma-organica forma-1"></div>
+            <div class="forma-organica forma-2"></div>
+            <div class="forma-organica forma-3"></div>
+
+            <img
+                class="logo-ampara"
+                src="resources/images/logo-branca.png"
+                alt="Logo Ampara" />
+
+            <div class="cadastro-brand-conteudo">
+
+                <div class="titulo-brand-cadastro">
+                    <h1>
+                        Faça parte
+                        <span>dessa história</span>
+                    </h1>
+                </div>
+
+                <p class="descricao-brand-cadastro">
+                    Junte-se a uma rede de pessoas que transforma cuidado
+                    em novas oportunidades para animais que precisam.
+                </p>
+
+            </div>
+
+            <div class="frase-cadastro">
+                <span>Cuidar também é</span>
+                <strong>transformar.</strong>
+            </div>
+
+            <img
+                class="animais-cadastro"
+                src="resources/images/animais2.png"
+                alt="Cães e gatos representando os animais acolhidos pelo Ampara" />
+
+        </section>
+
+    </div>
+
+</h:body>
+
+</html>
