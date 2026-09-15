@@ -24,7 +24,7 @@ O projeto está em desenvolvimento. A base da aplicação web e a interface de a
 
 Atualmente o projeto conta com:
 
-- aplicação Java estruturada com Maven;
+- aplicação Java 25 estruturada com Maven;
 - execução local no WildFly;
 - interface web com Jakarta Faces e PrimeFaces;
 - tela de login responsiva;
@@ -40,7 +40,7 @@ Atualmente o projeto conta com:
 
 ## Tecnologias utilizadas
 
-- Java 21
+- Java 25
 - Jakarta Faces
 - PrimeFaces 15
 - PrimeIcons
@@ -87,7 +87,7 @@ A proposta é manter a interface separada das regras do sistema. As páginas XHT
 
 Para executar o projeto localmente são necessários:
 
-- JDK 21;
+- JDK 25;
 - Maven;
 - WildFly 41.
 
