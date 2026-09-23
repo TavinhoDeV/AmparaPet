@@ -1,6 +1,8 @@
 package br.com.ampara.controller;
 
+import br.com.ampara.service.UsuarioService;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
@@ -9,6 +11,9 @@ import java.util.Objects;
 @Named
 @RequestScoped
 public class CadastroController {
+
+    @Inject
+    private UsuarioService usuarioService;
 
     private String nome;
     private String email;
@@ -65,38 +70,32 @@ public class CadastroController {
         this.termos = termos;
     }
 
-    public void cadastrar() {
+    public String cadastrar() {
 
         if (!Objects.equals(confirmarSenha, senha)) {
-
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(
-                            FacesMessage.SEVERITY_ERROR,
-                            "As senhas não coincidem.",
-                            null));
-
-            return;
-
+            adicionarErro("As senhas não coincidem.");
+            return null;
         }
 
         if (!termos) {
-
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage(
-                            FacesMessage.SEVERITY_ERROR,
-                            "Você deve aceitar os termos e condições para prosseguir.",
-                            null));
-
-            return;
-
+            adicionarErro("Você deve aceitar os termos e condições para prosseguir.");
+            return null;
         }
 
-        System.out.println("Nome recebido: " + nome);
-        System.out.println("Email recebido: " + email);
-        System.out.println("Telefone recebido: " + telefone);
-    
+        try {
+            usuarioService.cadastrar(nome, email, telefone, senha);
+        } catch (IllegalArgumentException e) {
+            adicionarErro(e.getMessage());
+            return null;
+        }
+
+        return "login.xhtml?faces-redirect=true";
+    }
+
+    private void adicionarErro(String mensagem) {
+        FacesContext.getCurrentInstance().addMessage(
+                null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, null));
     }
 
 }
