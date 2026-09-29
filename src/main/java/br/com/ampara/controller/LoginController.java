@@ -8,15 +8,18 @@ import jakarta.inject.Named;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 
-import java.io.Serializable;
 import java.util.Optional;
 
 @Named
 @RequestScoped
 public class LoginController {
 
+    private final UsuarioService usuarioService;
+
     @Inject
-    private UsuarioService usuarioService;
+    public LoginController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     private String email;
     private String senha;
@@ -55,5 +58,4 @@ public class LoginController {
 
         return "dashboard.xhtml?faces-redirect=true";
     }
-
 }

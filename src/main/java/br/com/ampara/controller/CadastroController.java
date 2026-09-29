@@ -6,14 +6,19 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+
 import java.util.Objects;
 
 @Named
 @RequestScoped
 public class CadastroController {
 
+    private final UsuarioService usuarioService;
+
     @Inject
-    private UsuarioService usuarioService;
+    public CadastroController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
+    }
 
     private String nome;
     private String email;
@@ -97,5 +102,4 @@ public class CadastroController {
                 null,
                 new FacesMessage(FacesMessage.SEVERITY_ERROR, mensagem, null));
     }
-
 }
