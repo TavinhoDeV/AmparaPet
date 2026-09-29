@@ -693,13 +693,13 @@ body {
     left: 13px;
     top: 50%;
     transform: translateY(-50%);
-    font-family: "primeicons";
+    font-family: "primeicons", sans-serif;
     font-size: 15px;
 }
 
 .mensagem-erro {
     color: #9F2F2F;
-    background: rgba(210, 65, 65, 0.08);
+    background: #FCE8E8;
     border: 1px solid rgba(210, 65, 65, 0.22);
 }
 
@@ -710,7 +710,7 @@ body {
 
 .mensagem-aviso {
     color: #8A6500;
-    background: rgba(216, 168, 38, 0.10);
+    background: #FFF4D6;
     border: 1px solid rgba(216, 168, 38, 0.24);
 }
 
@@ -732,7 +732,7 @@ body {
 
 .mensagem-fatal {
     color: #7A1D1D;
-    background: rgba(155, 32, 32, 0.10);
+    background: #FCEAEA;
     border: 1px solid rgba(155, 32, 32, 0.28);
 }
 
